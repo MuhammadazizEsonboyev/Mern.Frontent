@@ -1,37 +1,64 @@
 import React from 'react'
-import { Navbar, Container ,Nav } from 'react-bootstrap';
-
+import Layout from '../../component/Layout'
+import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+import { Input } from '../../component/UI/input'
+// import { Signup } from './index';
 /**
 * @author
 * @function Signup
 **/
 
 export const Signup = (props) => {
-  return(
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Container>
-      <Navbar.Brand href="#home">BEK-Texno</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto">
-          
-          {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-          </NavDropdown> */}
-        </Nav>
-        <Nav>
-          <Nav.Link href="../Signin/index.js">Sigin</Nav.Link>
-    
-        </Nav>
-      </Navbar.Collapse>
-    </Container>
-    
-  </Navbar>
-  
-   )
+  return (
+    <Layout>
+      <Container>
+        <Row style={{ marginTop: '50px' }}>
+          <Col md={{ span: 6, offset: 3 }}>
+            <Form>
+              <Row>
+                <Col md={6}>
+                  <Input
+                    label="First Name"
+                    placeholder="First Name"
+                    value=""
+                    type="text"
+                    onChange={() => { }}
+                  />
+                </Col>
+                <Col md={6}>
+                  <Input
+                    label="last Name"
+                    placeholder="last Name"
+                    value=""
+                    type="text"
+                    onChange={() => { }}
+                  />
+                </Col>
+              </Row>
 
- }
+              <Input
+                label="Email"
+                placeholder="Email"
+                value=""
+                type="email"
+                onChange={() => { }}
+              />
+              <Input
+                label="Password"
+                placeholder="Password"
+                value=""
+                type="password"
+                onChange={() => { }}
+              />
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+
+      </Container>
+    </Layout>
+  )
+
+}
