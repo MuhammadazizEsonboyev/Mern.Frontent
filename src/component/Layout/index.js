@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from 'react-bootstrap';
+// import { Container } from 'react-bootstrap';
 // import { Layout } from './../../components/layout/index';
 import { Header } from '../Header';
 
@@ -13,9 +13,8 @@ import { Header } from '../Header';
   return (
     <>
       <Header />
-      <Container>
         {props.children}
-      </Container>
+  
     </>
   )
 
