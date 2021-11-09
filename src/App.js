@@ -1,12 +1,23 @@
 import React from 'react'
 import './App.css';
-import { Layout } from './components/layout';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Home } from './container/Home';
+import { Signin } from './container/Signin';
+import { Signup } from './container/Signup';
+// import Layout from './component/Layout/index';
+
+
+
 function App() {
   return (
     <div className="App">
-      <Layout>
-        <h1>hello world</h1>
-      </Layout>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/signup" component={Signup} />
+        </Switch>
+      </Router>
     </div>
   );
 }
