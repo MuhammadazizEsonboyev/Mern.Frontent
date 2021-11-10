@@ -17,6 +17,7 @@ const initState = {
 };
 
 export default (state = initState , action) => {
+    
     console.log(action);
 
     switch (action.type) {
@@ -30,8 +31,9 @@ export default (state = initState , action) => {
             state = {
                 ...state,
                 user: action.payload.user,
-                token:  action.payload,
-                authenticate: true
+                token:  action.payload.token,
+                authenticate: true,
+                authenticating: false
             }
             break;
     }
