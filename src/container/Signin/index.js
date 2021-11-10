@@ -3,23 +3,31 @@ import Layout from '../../component/Layout';
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 import { Input } from '../../component/UI/input';
 import { login } from '../../actions';
-import { useDispatch } from 'react-redux';
-import {useState} from 'react' 
+import { useDispatch, useSelector } from 'react-redux';
+import {useState , useEffect} from 'react' 
+import { Redirect } from 'react-router-dom';
+import { isUserLoggedIn } from '../../actions';
 
 /**
 * @author
 * @function Signin
 **/
 
-
-
 export const Signin = (props) => {
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-   
+  const auth = useSelector(state => state.auth);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(!auth.authenticate){
+      dispatch(isUserLoggedIn());
+    }
+  
+
+  }, []);
 
   const userLogin = (e) => {
     
@@ -32,7 +40,9 @@ export const Signin = (props) => {
     dispatch(login(user));
   }
 
-
+  if(auth.authenticate){
+    return <Redirect to={`/`}/>
+  }
 
   return (
 
@@ -49,7 +59,6 @@ export const Signin = (props) => {
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
-
               <Input
                 label="Password"
                 placeholder="Password"
