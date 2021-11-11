@@ -6,7 +6,6 @@ import { Redirect } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
 import { signup } from './../../actions/user.actions';
 
-
 /**
 * @author
 * @function Signup
@@ -22,7 +21,9 @@ export const Signup = (props) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const auth = useSelector(state => state.auth);
+  const user = useSelector(state => state.user);
   const dispatch = useDispatch();
+
 
   const userSignup = (e) => {
 
@@ -37,6 +38,10 @@ export const Signup = (props) => {
 
   if (auth.authenticate) {
     return <Redirect to={`/`} />
+  };
+
+  if(user.loading){
+    return <p>loading...</p>;
   }
 
   return (

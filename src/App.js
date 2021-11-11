@@ -20,7 +20,7 @@ function App() {
       dispatch(isUserLoggedIn());
     }
 
-  }, []);
+  },);
 
   return (
     <div className="App">
