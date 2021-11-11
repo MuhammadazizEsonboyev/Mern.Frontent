@@ -1,12 +1,12 @@
-import React from 'react'; 
+import React from 'react';
 import Layout from '../../component/Layout';
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 import { Input } from '../../component/UI/input';
 import { login } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
-import {useState , useEffect} from 'react' 
+import { useState, } from 'react'
 import { Redirect } from 'react-router-dom';
-import { isUserLoggedIn } from '../../actions';
+
 
 /**
 * @author
@@ -14,6 +14,7 @@ import { isUserLoggedIn } from '../../actions';
 **/
 
 export const Signin = (props) => {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,16 +22,12 @@ export const Signin = (props) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if(!auth.authenticate){
-      dispatch(isUserLoggedIn());
-    }
-  
 
-  }, []);
+
+
 
   const userLogin = (e) => {
-    
+
     e.preventDefault();
 
     const user = {
@@ -40,8 +37,8 @@ export const Signin = (props) => {
     dispatch(login(user));
   }
 
-  if(auth.authenticate){
-    return <Redirect to={`/`}/>
+  if (auth.authenticate) {
+    return <Redirect to={`/`} />
   }
 
   return (
