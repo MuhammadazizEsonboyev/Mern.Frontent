@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 // import { Layout } from './../../components/layout/index';
 import { Header } from '../Header';
 import { NavLink } from 'react-router-dom'; 
+import { Category } from './../../container/Category/index';
 
 
 /**
@@ -21,6 +22,7 @@ import { NavLink } from 'react-router-dom';
           <Col md={2} className="sidebar">
             <ul>
               <li><NavLink to={`/`}>Home</NavLink></li>
+              <li><NavLink to={`/Category`}>Category</NavLink></li>
               <li><NavLink to={`/products`}>Products</NavLink></li>
               <li><NavLink to={`/orders`}>Orders</NavLink></li>
             </ul>

@@ -9,6 +9,7 @@ import { isUserLoggedIn } from './actions';
 import Home from './container/Home';
 import { Products } from './container/Products/index';
 import { Orders } from './container/Orders/index';
+import { Category } from './container/Category/index';
 
 
 
@@ -29,6 +30,7 @@ function App() {
     <div className="App">
       <Switch>
         <PrivateRoute path="/" exact component = {Home} />
+        <PrivateRoute path="/category"  component = {Category} />
         <PrivateRoute path="/products" component={Products}/>
         <PrivateRoute path="/orders" component={Orders}/>
 
