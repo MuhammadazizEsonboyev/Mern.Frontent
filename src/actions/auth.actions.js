@@ -7,7 +7,7 @@ export const login = (user) => {
     return async (dispatch) => {
 
         dispatch({ type: authConstants.LOGIN_REQUEST });
-        const res = await axios.post(`/admin/signin`, {
+        const res = await axios.post(`/signin`, {
             ...user
         })
 
@@ -34,7 +34,41 @@ export const login = (user) => {
 
     }
 }
+export const signup = (user) => {
+    console.log(user);
 
+    return async (dispatch) => {
+
+        dispatch({ type: authConstants.LOGIN_REQUEST });
+        const res = await axios.post(`/signup`, {
+            ...user,
+            
+        })
+        
+
+        if (res.status === 201) {
+            const {  token , message} = res.data;
+            console.log(user, message)
+            dispatch({
+                type: authConstants.LOGIN_SUCCESS,
+                payload: {
+                    token, message,  user
+                }
+            });
+        }
+        else {
+            console.log('else',user);
+            if (res.status === 400) {
+                dispatch({
+                    type: authConstants.LOGIN_FAILURE,
+                    payload: { error: res.data.error }
+                })
+            }
+        }
+
+
+    }
+}
 
  export const isUserLoggedIn = () =>{
     return async dispatch  => {
@@ -53,7 +87,14 @@ export const login = (user) => {
                 payload: { error: 'Failet to login ' }
             })
         }
-          
-     
+    }
+}
+
+export const signout = () =>{
+    return async dispatch =>{
+        localStorage.clear();
+        dispatch({
+            type: authConstants.LOGOUT_REQUEST
+        });
     }
 }
