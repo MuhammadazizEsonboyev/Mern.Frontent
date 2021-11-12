@@ -1,3 +1,4 @@
+// import { Category } from './../container/Category/index';
 export const authConstants = {
     LOGIN_REQUEST: 'LOGIN_REQUEST',
     LOGIN_FAILURE: 'LOGIN_FAILURE',
@@ -12,3 +13,9 @@ export const userContants = {
     USER_REGISTER_SUCCESS: 'USER_REGISTER_SUCCESS',
     USER_REGISTER_FAILURE: 'USER_REGISTER_FAILURE'
 }
+
+export  const categoryContants = {
+    GET_ALL_CATEGORIES_REQUEST:'GET_ALL_CATEGORIES_REQUEST',
+    GET_ALL_CATEGORIES_SUCCSESS:'GET_ALL_CATEGORIES_SUCCSESS',
+    GET_ALL_CATEGORIES_FAILURE: 'GET_ALL_CATEGORIES_FAILURE'
+} 
