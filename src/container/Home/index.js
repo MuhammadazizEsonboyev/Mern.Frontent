@@ -15,7 +15,7 @@ import { NavLink } from 'react-router-dom';
 **/
  const Home = (props) => {
   return (
-    <Layout slidebar>
+    <Layout sidebar>
   
     
 
