@@ -8,7 +8,7 @@ import Layout from './../../component/Layout/index';
 
 export const Orders = (props) => {
     return (
-        <Layout slidebar>
+        <Layout sidebar>
             Orders
         </Layout>
     )
