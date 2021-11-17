@@ -10,6 +10,9 @@ import Home from './container/Home';
 import { Products } from './container/Products/index';
 import { Orders } from './container/Orders/index';
 import { Category } from './container/Category/index';
+// import { getAllCategory } from './actions/category.actions';
+import { getInitialData } from './actions/initialData.actions';
+
 
 
 
@@ -23,6 +26,8 @@ function App() {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
+
+    dispatch(getInitialData());
 
   }, []);
 

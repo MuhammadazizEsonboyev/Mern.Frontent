@@ -12,12 +12,24 @@ const initState = {
 const buildNewCategories = (parentId, categories, category) => {
     let myCategories = [];
 
+    if(parentId == undefined){
+        return [
+            ...categories,
+            {
+                _id: category._id,
+                name: category.name,
+                slug: category.slug,
+                // children:  
+            }
+        ];
+    }
+
     for (let cat of categories) {
 
-        if (cat._Id == parentId) {
+        if (cat._id == parentId) {
             myCategories.push({
                 ...cat,
-                childer: cat.childer && cat.childer.length > 0 ? buildNewCategories(parentId, [...cat.childer, {
+                childer: cat.childer ? buildNewCategories(parentId, [...cat.childer, {
                     _id: category._id,
                     name: category.name,
                     slug: category.slug,
@@ -28,7 +40,7 @@ const buildNewCategories = (parentId, categories, category) => {
         } else {
             myCategories.push({
                 ...cat,
-                childer: cat.childer && cat.childer.length > 0 ? buildNewCategories(parentId, cat.childer, category) : []
+                childer: cat.childer ? buildNewCategories(parentId, cat.childer, category) : []
             });
         }
 
