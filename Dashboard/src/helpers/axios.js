@@ -1,14 +1,14 @@
-import axios from "axios";
-import { api } from "../urlConfig";
+// import axios from "axios";
+// import { api } from "../urlConfig";
 
-const token = window.localStorage.getItem('token')
+// const token = window.localStorage.getItem('token')
 
-const axiosIntance = axios.create({
-    baseURL: api ,
-    headers:{
-        'Authorization':token ? `Bearer ${token}`: ''
-    }
-})
+// const axiosIntance = axios.create({
+//     baseURL: api ,
+//     headers:{
+//         'Authorization':token ? `Bearer ${token}`: ''
+//     }
+// })
 
 
-export default axiosIntance;
+// export default axiosIntance;
