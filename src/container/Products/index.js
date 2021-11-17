@@ -4,11 +4,11 @@ import { Container, Row, Col, Table } from 'react-bootstrap';
 import { Input } from './../../component/UI/input/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, setShow } from 'react';
-import { addProduct } from './../../actions/product.action';
+import { addProduct } from './../../actions';
 import { Modal } from 'react-bootstrap';
 import { productConstants } from './../../actions/constants';
-
-
+import './style.css';
+import { generatePublicUrl } from '../../urlConfig';
 
 /**
 * @author
@@ -69,7 +69,7 @@ export const Products = (props) => {
 
     const renderProducts = () => {
         return (
-            <Table style={{fontSize: 12}} responsive="sm">
+            <Table style={{ fontSize: 12 }} responsive="sm">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -97,7 +97,7 @@ export const Products = (props) => {
                                     <td>{product.name}</td>
                                     <td>{product.price}</td>
                                     <td>{product.quantity}</td>
-                                    <td>--</td>
+                                    <td>{product.category.name}</td>
                                 </tr>
                             ) : null
                     }
@@ -163,14 +163,14 @@ export const Products = (props) => {
         setProductDetailModal(false);
     }
 
-    const showProductDetailsModal = (product) =>{
+    const showProductDetailsModal = (product) => {
         setProductDetails(product);
         setProductDetailModal(true);
     }
 
     const renderProductDetailsModal = () => {
 
-        if(!productDetails){
+        if (!productDetails) {
             return null;
         }
 
@@ -183,8 +183,41 @@ export const Products = (props) => {
             >
                 <Row>
                     <Col md="6">
-                    <label>Name</label>
-                    <p>{productDetails.name}</p>
+                        <label className="key">Name</label>
+                        <p className="value">{productDetails.name}</p>
+                    </Col>
+                    <Col md="6">
+                        <label className="key">Price</label>
+                        <p className="value">{productDetails.price}</p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="6">
+                        <label className="key">Quantity</label>
+                        <p className="value">{productDetails.quantity}</p>
+                    </Col>
+                    <Col md="6">
+                        <label className="key">Category</label>
+                        <p className="value">{productDetails.category.name}</p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="12">
+                        <label className="key">Description</label>
+                        <p className="value">{productDetails.description}</p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <label className="key">Product Pictures</label>
+                        <div style={{ display: 'flex' }}>
+                            {productDetails.productPictures.map(picture =>
+                                <div className="productImgContainer">
+                                    <img src={generatePublicUrl(picture.img)} />
+                                </div>
+                            )}
+                        </div>
+
                     </Col>
                 </Row>
 
