@@ -6,10 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, setShow } from 'react';
 import { addProduct } from './../../actions';
 import { Modal } from 'react-bootstrap';
-import { productConstants } from './../../actions/constants';
-import './style.css';
 import { generatePublicUrl } from '../../urlConfig';
-
+import './style.css';
 /**
 * @author
 * @function Products
@@ -145,13 +143,13 @@ export const Products = (props) => {
                     <option>Select Category</option>
                     {
                         createCategoryList(category.categories).map(option =>
-                            <option key={option.value} value={option.value}>{option.name}</option>)
+                        <option key={option.value} value={option.value}>{option.name}</option>)
                     }
                 </select>
 
                 {
                     productPictures.length > 0 ?
-                        productPictures.map((pic, index) => <div key={index}>{pic.name}</div >) : null
+                    productPictures.map((pic, index) => <div key={index}>{pic.name}</div >) : null
                 }
 
                 <input type="file" name="productPicture" onChange={handleProductPictures} />
@@ -232,7 +230,7 @@ export const Products = (props) => {
                     <Col md={12}>
                         <div style={{ display: 'flex', justifyContent: "space-between" }}>
                             <h3>Products</h3>
-                            <button onClick={handleShow}>Add</button>
+                            <button className="button2" onClick={handleShow}>Add</button>
                         </div>
                     </Col>
                 </Row>
