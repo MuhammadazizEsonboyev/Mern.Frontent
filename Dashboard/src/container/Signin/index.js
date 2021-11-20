@@ -19,13 +19,7 @@ export const Signin = (props) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const auth = useSelector(state => state.auth);
-
   const dispatch = useDispatch();
-
-
-
-
-
   const userLogin = (e) => {
 
     e.preventDefault();
@@ -43,9 +37,9 @@ export const Signin = (props) => {
 
   return (
 
-    <Layout>
-      <Container>
-        <Row style={{ marginTop: '50px' }}>
+    <Layout >
+      <Container >
+        <Row style={{ marginTop: "100px" }}>
           <Col md={{ span: 6, offset: 3 }}>
             <Form onSubmit={userLogin}>
 
