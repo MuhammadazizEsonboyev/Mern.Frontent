@@ -4,9 +4,8 @@ import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCategory } from './../../actions';
 import { Input } from './../../component/UI/input/index';
-// import NewModal from './../../component/UI/input/Modal/index';
 import { getAllCategory } from '../../actions';
-    
+
 
 
 
@@ -30,17 +29,15 @@ export const Category = (props) => {
 
     }, []);
 
+    
     const handleClose = () => {
         const form = new FormData();
-     
-        form.append('name', categoryName);
+        form.append('name', 'categoryName');
         form.append('parentId', parentCategoryId);
         form.append('categoryImage', categoryImage);
         dispatch(addCategory(form));
-
         setShow(false);
     }
-
     const handleShow = () => setShow(true);
 
 
@@ -52,14 +49,11 @@ export const Category = (props) => {
                 <li key={category.name}>
                     {category.name}
                     {category.children.length > 0 ? (<ul>{renderCategories(category.children)}</ul>) : null}
-                </li> 
+                </li>
             );
         }
-
-
         return myCategories;
     }
-
     const createCategoryList = (categories, options = []) => {
         for (let category of categories) {
             options.push({ value: category._id, name: category.name });
@@ -69,14 +63,12 @@ export const Category = (props) => {
         }
         return options;
     }
-
     const handleCategoryImage = (e) => {
         setCategoryImage(e.target.files[0]);
     }
-
     return (
         <Layout sidebar>
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col md={12}>
                         <div style={{ display: 'flex', justifyContent: "space-between" }}>
@@ -89,13 +81,10 @@ export const Category = (props) => {
                     <Col md={12}>
                         <ul>
                             {renderCategories(category.categories)}
-                            {JSON.stringify(createCategoryList(category.categories))}
                         </ul>
                     </Col>
                 </Row>
             </Container>
-
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add new Category</Modal.Title>
@@ -116,7 +105,6 @@ export const Category = (props) => {
                                 <option key={option.value} value={option.value}>{option.name}</option>)
                         }
                     </select>
-
                     <input type="file" name="categoryImage" onChange={handleCategoryImage} />
                 </Modal.Body>
                 <Modal.Footer>
@@ -125,7 +113,6 @@ export const Category = (props) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-
         </Layout>
     )
 

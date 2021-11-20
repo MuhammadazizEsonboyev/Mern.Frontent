@@ -8,18 +8,14 @@ const initState = {
         email: '',
         picture: ''
     },
-
     authenticate: false,
     authenticating: false,
     loading: false,
     error: null,
     message: ''
 };
-
 export default (state = initState, action) => {
-
     console.log(action);
-
     switch (action.type) {
         case authConstants.LOGIN_REQUEST:
             state = {
@@ -55,6 +51,5 @@ export default (state = initState, action) => {
             }
             break;
     }
-
     return state;
 }
