@@ -1,6 +1,6 @@
 import { categoryConstants, productConstants } from "./constants"
 import axios from "axios";
-// import { baseUrl } from './../urlConfig';
+
 
 
 export const getInitialData = () => {
@@ -15,7 +15,7 @@ export const getInitialData = () => {
                 payload: { categories }
             });
             dispatch({
-                type: productConstants.GET_ALL_CATEGORIES_SUCCESS,
+                type: productConstants.GET_ALL_PRODUCTS_SUCCESS,
                 payload: { products }
             });
         }

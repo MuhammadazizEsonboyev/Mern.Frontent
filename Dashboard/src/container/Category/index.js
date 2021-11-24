@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../component/Layout'
-import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Button, ModalBody } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCategory } from './../../actions';
 import { Input } from './../../component/UI/input/index';
@@ -29,13 +29,14 @@ export const Category = (props) => {
 
     }, []);
 
-    
     const handleClose = () => {
         const form = new FormData();
         form.append('name', 'categoryName');
         form.append('parentId', parentCategoryId);
         form.append('categoryImage', categoryImage);
         dispatch(addCategory(form));
+        setCategoryName('');
+        setParentCategoryId('');
         setShow(false);
     }
     const handleShow = () => setShow(true);
@@ -68,7 +69,7 @@ export const Category = (props) => {
     }
     return (
         <Layout sidebar>
-            <Container fluid>
+            <Container>
                 <Row>
                     <Col md={12}>
                         <div style={{ display: 'flex', justifyContent: "space-between" }}>
@@ -85,6 +86,7 @@ export const Category = (props) => {
                     </Col>
                 </Row>
             </Container>
+
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add new Category</Modal.Title>
@@ -113,6 +115,8 @@ export const Category = (props) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+
         </Layout>
     )
 
