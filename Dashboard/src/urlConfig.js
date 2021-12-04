@@ -1,6 +1,6 @@
 export const baseUrl = 'http://localhost:3000/api';
 export const generatePublicUrl = (fileName) => {
-    return `http://localhost:3000/public/${fileName}`;
+    return `http://localhost:3000/api${fileName}`;
 }
 // const baseUrl = "http://localhost:3000/baseUrl";
 // export const baseUrl = `${baseUrl}/baseUrl`;

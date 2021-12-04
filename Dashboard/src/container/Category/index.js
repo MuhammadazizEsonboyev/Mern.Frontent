@@ -31,7 +31,7 @@ export const Category = (props) => {
 
     const handleClose = () => {
         const form = new FormData();
-        form.append('name', 'categoryName');
+        form.append('name', categoryName);
         form.append('parentId', parentCategoryId);
         form.append('categoryImage', categoryImage);
         dispatch(addCategory(form));
@@ -47,7 +47,7 @@ export const Category = (props) => {
         let myCategories = [];
         for (let category of categories) {
             myCategories.push(
-                <li key={category.name}>
+                <li key={category.slug}>
                     {category.name}
                     {category.children.length > 0 ? (<ul>{renderCategories(category.children)}</ul>) : null}
                 </li>

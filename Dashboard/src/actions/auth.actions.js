@@ -7,7 +7,7 @@ export const login = (user) => {
     return async (dispatch) => {
 
         dispatch({ type: authConstants.LOGIN_REQUEST });
-        const res = await axios.post(`/signin`, {
+        const res = await axios.post(`/admin/signin`, {
             ...user
         })
 
@@ -40,7 +40,7 @@ export const signup = (user) => {
     return async (dispatch) => {
 
         dispatch({ type: authConstants.LOGIN_REQUEST });
-        const res = await axios.post(`/signup`, {
+        const res = await axios.post(`/admin/signup`, {
             ...user,
 
         })
