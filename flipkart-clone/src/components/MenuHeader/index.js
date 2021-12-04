@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector} from 'react-redux';
 import './style.css';
-import { getAllCategory } from './../../../../flipkart-clone/src/actions/category.actions';
+import { getAllCategory } from '../../actions';
 
 /**
 * @author
@@ -21,20 +21,15 @@ export const MenuHeader = (props) => {
 
     let myCategories = [];
     for (let category of categories) {
-      myCategories.push(
-        <li key={category.name}>
-          {
-            category.parentId ? <a href={category.slug}>{category.name}</a>:
-            <span>{category.name}</span>
-          }
-          {category.children.length > 0 ? (<ul>{renderCategories(category.children)}</ul>) : null}
-        </li>
-      );
+        myCategories.push(
+            <li key={category.name}>
+                {category.name}
+                {category.children.length > 0 ? (<ul>{renderCategories(category.children)}</ul>) : null}
+            </li>
+        );
     }
-
-
     return myCategories;
-  }
+}
 
 
   return (

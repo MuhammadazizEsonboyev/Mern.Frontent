@@ -5,13 +5,12 @@ import { Signin } from './container/Signin';
 import { Signup } from './container/Signup';
 import PrivateRoute from './component/HOC/PrivateRoute'
 import { useDispatch, useSelector } from 'react-redux';
-import { isUserLoggedIn , getAllCategory} from './actions';
+import { isUserLoggedIn , getInitialData} from './actions';
 import Home from './container/Home';
 import { Products } from './container/Products/index';
 import { Orders } from './container/Orders/index';
 import { Category } from './container/Category/index';
-// import { getAllCategory } from './actions/category.actions';
-import { getInitialData } from './actions/initialData.actions';
+
 
 
 
@@ -26,11 +25,9 @@ function App() {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-
-    dispatch(getAllCategory());
+    dispatch(getInitialData());
 
   }, []);
-
   return (
     <div className="App">
       <Switch>

@@ -1,4 +1,4 @@
-import { initialDataConst, productConstants } from "../actions/constants";
+import { productConstants } from "../actions/constants";
 
 const initialState = {
     products: []
